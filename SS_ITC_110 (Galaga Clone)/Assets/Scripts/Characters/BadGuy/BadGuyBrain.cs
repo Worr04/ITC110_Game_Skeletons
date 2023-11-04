@@ -6,6 +6,7 @@ using UnityEngine;
 public class BadGuyBrain : MonoBehaviour
 {
     public GameObject player;
+    public EnemyShoot enemyShoot;
 
     public float moveSpeed = 0.5f;
     public float timeBetweenStates = 5.0f;
@@ -23,6 +24,7 @@ public class BadGuyBrain : MonoBehaviour
         player = GameObject.Find("PlayerShip");
         state = BadGuyState.Idling;
         homePos = this.transform.position;
+        enemyShoot = GetComponent<EnemyShoot>();
     }
 
     // Update is called once per frame
@@ -69,6 +71,11 @@ public class BadGuyBrain : MonoBehaviour
         state = BadGuyState.Attacking;
         yield return new WaitForSeconds(timeBetweenStates);
         state = BadGuyState.Returning;
+    }
+
+    public void ShootBullet()
+    {
+        enemyShoot.SpawnBullet(5.0f, new Vector2(0.0f, -1.0f));
     }
 
     public void Despawn()

@@ -7,6 +7,8 @@ TagManager:
   - BadGuyTriggers
   - Despawner
   - Bullet
+  - Border
+  - Enemy
   layers:
   - Default
   - TransparentFX
